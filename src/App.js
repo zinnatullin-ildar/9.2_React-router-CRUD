@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import { Routes, Route, HashRouter } from "react-router-dom";
+import ListPage from './components/pages/ListPage';
+import CreatePage from './components/pages/CreatePage';
+import EditPage from './components/pages/EditPage';
+import PostDetailedPage from './components/pages/PostDetailedPage';
+import Main from './components/Main';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Main />} >
+          <Route path="/" element={<ListPage />} />
+          <Route path="/posts/new" element={<CreatePage />} />
+          <Route path="/posts/:id" element={<PostDetailedPage />} />
+          <Route path="/posts/edit/:id" element={<EditPage />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 }
 
